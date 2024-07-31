@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+  }
+  
+  #gameArea {
+    position: relative;
+    width: 350px;
+    height: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: rgb(248, 213, 160); 
+    border: 2px solid rgb(251, 74, 4);
+  }
+  
+  #car {
+    position: absolute;
+    top: 600px; /* Use a high initial top value */
+    width: 30px;
+    height: 60px;
+    background-color: rgb(227, 15, 92); 
+    border: 2px solid rgb(239, 237, 67);
+    left: 50%; 
+    transform: translateX(-50%); 
+    transition: none; 
+      }
+  
+  #road {
+    position: absolute;
+    width: 100%;
+    height: 200%;
+    top: -100%;
+    background: repeating-linear-gradient(
+      to bottom,
+      gray 0,
+      gray 46%,
+      white 46%,
+      white 50%
+    );
+    animation: moveRoad 2s linear infinite;
+  }
+  
+  @keyframes moveRoad {
+    0% {
+      top: -100%;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  
+  .obstacle {
+    position: absolute;
+    width: 30px;
+    height: 60px;
+    background-color: blue; 
+    border: 2px solid yellow;
+    top: 0px; 
+    animation: moveObstacle 4s linear infinite;
+  }
+
+  @keyframes moveObstacle {
+    0% {
+      top: 0px;
+    }
+    100% {
+      top: 700px; 
+    }
+  }
+
+#finish-line {
+    position: absolute;
+    width: 100%;
+    height: 30px; /* Adjust height as needed */
+    background-color: red;
+    top: 20px; /* Position it vertically where the finish line should be */
+    left: 0;
+    color: white;
+    display: flex;
+    justify-content: center; /* Center the text horizontally */
+    align-items: center; /* Center the text vertically */
+    font-size: 20px; /* Adjust font size as needed */
+}
