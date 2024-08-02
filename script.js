@@ -2,7 +2,7 @@
 class Car {
     constructor(element) {
         this.element = element;
-        this.position = { left: 175, top: 600 }; // Initialize car's position
+        this.position = { left: 175, top: 600 }; 
     }
 
     moveLeft() {
@@ -44,9 +44,9 @@ class Car {
 document.addEventListener('DOMContentLoaded', () => {
     const carElement = document.getElementById('car');
     const car = new Car(carElement);
-    const startTime = Date.now(); // Capture the starting time
+    const startTime = Date.now(); 
 
-    createStaticObstacles(5);  // Create 5 static obstacles
+    createStaticObstacles(4); 
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             car.moveRight();
         } else if (e.key === 'ArrowUp') {
             car.moveUp();
-            checkFinishLine(car, startTime); // Check if the car reached the finish line
+            checkFinishLine(car, startTime); 
         } else if (e.key === 'ArrowDown') {
             car.moveDown();
         }
@@ -67,33 +67,30 @@ function createStaticObstacles(numObstacles) {
     const obstaclesContainer = document.getElementById('obstacles');
     
     if (!obstaclesContainer) {
-        console.error("Obstacles container not found"); // ajout à supprimer s'il le faut
+        console.error("Obstacles container not found"); 
         return;
     }
 
-    const positions = ['60px', '160px', '260px']; // left, middle, right positions
-    const finishLineHeight = 30; // height of the finish line
-    const gameAreaHeight = 700; // height of the game area
-    const obstacleHeight = 60; // height of the obstacle
-    let topPosition = 0;
+    const positions = ['60px', '160px', '260px']; 
+    const finishLineHeight = 30; 
+    const gameAreaHeight = 700; 
+    const obstacleHeight = 60;
+    let topPosition = 110;
 
     for (let i = 0; i < numObstacles; i++) {
 
-        // Ensure obstacles are not placed within the finish line area
         if (topPosition + obstacleHeight > gameAreaHeight - finishLineHeight) break;
 
         const obstacle = document.createElement('div');
         obstacle.className = 'static-obstacle';
 
-        // Alternate positions based on the index
         const positionIndex = i % positions.length;
         obstacle.style.left = positions[positionIndex];
         obstacle.style.top = `${topPosition}px`;
 
         obstaclesContainer.appendChild(obstacle);
 
-        // Increment top position for orderly placement
-        topPosition += 100; // Adjust this increment as needed based on the height of the obstacles
+        topPosition += 110; 
     }
 }
 
@@ -113,7 +110,7 @@ function checkCollisionWithStaticObstacles(car) {
             carRect.left <= obstacleRect.right
         ) {
             alert('Collision detected! Game Over.');
-            location.reload(); // restart the game
+            location.reload(); 
         }
     });
 }
@@ -132,7 +129,7 @@ function checkFinishLine(car) {
         carRect.left <= finishLineRect.right
     ) {
         alert(`Congratulations! You've finished the game.`);
-        location.reload(); // Restart the game or handle accordingly
+        location.reload(); 
     }
 }
 
@@ -157,40 +154,31 @@ function checkFinishLine(car) {
             console.error("Start button not found.");
         }
     
-        // Add your game starting logic here
         console.log("Game Started!");
     
-        // Example: If you have a function to initialize the game
         initializeGame();
     }
     
     function initializeGame() {
-        // Set up your game elements, like the car, road, obstacles, etc.
         console.log("Initializing game elements...");
     
-        // Example elements setup
         const car = setUpCar();
         const road = setUpRoad();
         const obstacles = setUpObstacles();
     
-        // Start the game loop
         gameLoop();
     }
     
     function setUpCar() {
-        // Your car setup logic
     }
     
     function setUpRoad() {
-        // Your road setup logic
     }
     
     function setUpObstacles() {
-        // Your obstacles setup logic
     }
     
     function gameLoop() {
-        // Your game loop logic
         console.log("Game Loop Running...");
     }
 
@@ -208,7 +196,7 @@ function checkFinishLine(car) {
         }
     
         function updateTimer() {
-            if (startTime !== null) { // Ensure the timer only updates if it has started
+            if (startTime !== null) { 
                 let elapsedTime = Date.now() - startTime;
                 document.getElementById('timer').textContent = formatTime(elapsedTime);
             }
@@ -217,16 +205,13 @@ function checkFinishLine(car) {
         function startRace() {
             startTime = Date.now();
             timerInterval = setInterval(updateTimer, 1000);
-            document.getElementById('start-button').style.display = 'none'; // Hide the start button
+            document.getElementById('start-button').style.display = 'none'; 
         }
     
-        // Event listener for the start button
         document.getElementById('start-button').addEventListener('click', startRace);
 
-        // Initialize the timer to show 00:00 initially
         document.getElementById('timer').textContent = "00:00";
 
-        // If you have any pop-up logic
         function showPopUp() {
             alert(`Game time is: ${document.getElementById('timer').textContent}`);
     }

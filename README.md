@@ -4,7 +4,7 @@
 This is a car game, that was created in 4 days, with HTML, CSS, JavaScript, DOM manipulation and OOP concepts.
 
 ## Instructions.
-To play the game : you just need to click on the "start button", and then move the car, in order to go through every obstacle, as fast as possible. When you'll arrive at the finish line : you will have the time you spend while on the game. 
+To play the game : you just need to click on the "start button", and then move the car, in order to go through every obstacle, as fast as possible. When you'll arrive at the finish line : you will see the time you spend while on the game. 
 
 ## links : 
 - Game : https://amramo92.github.io/my-racing-car-game/
